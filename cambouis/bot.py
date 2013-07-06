@@ -41,6 +41,8 @@ class Bot(object):
             self.irc.ping(event.msg)
         if event.type == 'PRIVMSG':
             self.dispatch(event)
+        if event.command == '001':
+            self.irc.join((CHANNEL,))
         elif event.type == 'ERROR':
             self.stop()
 
